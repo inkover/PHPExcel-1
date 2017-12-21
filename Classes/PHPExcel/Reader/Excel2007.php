@@ -308,9 +308,9 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
         $fileName = PHPExcel_Shared_File::realpath($fileName);
 
         // Apache POI fixes
-        $contents = $archive->getFromName($fileName);
+        $contents = $archive->getFromName($fileName, 0, ZipArchive::FL_NOCASE);
         if ($contents === false) {
-            $contents = $archive->getFromName(substr($fileName, 1));
+            $contents = $archive->getFromName(substr($fileName, 1), 0, ZipArchive::FL_NOCASE);
         }
 
         return $contents;
